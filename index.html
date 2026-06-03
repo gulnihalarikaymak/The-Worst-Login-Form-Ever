@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Roulette</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background spinning wheel -->
+    <div class="bg-wheel-wrap">
+        <div class="bg-wheel"></div>
+    </div>
+
+    <!-- Main container -->
+    <div class="page-center">
+        <div class="card">
+
+            <!-- Header -->
+            <div class="card-header">
+                <div class="neon-line top-line"></div>
+                <h1 class="title">🎰 LOGIN ROULETTE 🎰</h1>
+                <p class="subtitle" id="subtitle">Where every login is a gamble</p>
+                <div class="neon-line bottom-line"></div>
+            </div>
+
+            <!-- Slot machine -->
+            <div class="slot-machine">
+                <div class="slot-reel-wrap">
+                    <div class="slot-reel" id="reel-1">7</div>
+                </div>
+                <div class="slot-sep">|</div>
+                <div class="slot-reel-wrap">
+                    <div class="slot-reel" id="reel-2">7</div>
+                </div>
+                <div class="slot-sep">|</div>
+                <div class="slot-reel-wrap">
+                    <div class="slot-reel" id="reel-3">7</div>
+                </div>
+            </div>
+
+            <!-- Slot hint -->
+            <p class="slot-hint" id="slot-hint">Get <strong>7 | 7 | 7</strong> to login</p>
+
+            <!-- Stats bar -->
+            <div class="stats-bar">
+                <span>Attempts: <strong id="attempt-count">0</strong></span>
+                <span>🎲 Luck: <strong id="luck-level">???</strong></span>
+            </div>
+
+            <!-- Form -->
+            <form id="loginForm" onsubmit="return handleSubmit(event)" novalidate>
+
+                <div class="form-group">
+                    <label id="username-label" for="username">Username</label>
+                    <input type="text" id="username" name="username" autocomplete="off" placeholder="...">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" autocomplete="off" placeholder="...">
+                    <div class="rule-box" id="rule-box">
+                        <span class="rule-icon">⚠️</span>
+                        <span id="current-rule">Start typing to reveal the current rule...</span>
+                    </div>
+                </div>
+
+                <div class="form-group captcha-group" id="captcha-group">
+                    <label id="captcha-label">Security Check</label>
+                    <div class="captcha-inner">
+                        <span id="captcha-question" class="captcha-q"></span>
+                        <input type="text" id="captcha-answer" placeholder="?" autocomplete="off">
+                    </div>
+                    <span class="captcha-hint" id="captcha-hint"></span>
+                </div>
+
+                <button type="submit" id="submit-btn" class="submit-btn">
+                    🎲 SPIN & LOGIN 🎲
+                </button>
+
+            </form>
+
+            <p class="footer-note">By clicking login you accept our <u>321-page Terms</u> which change every 12 seconds.</p>
+        </div>
+    </div>
+
+    <!-- Result — fixed so it's always visible -->
+    <div class="result-msg" id="result-msg"></div>
+
+    <!-- Win screen -->
+    <div class="win-screen" id="win-screen">
+        <div class="win-content">
+            <div class="win-icon">🎰</div>
+            <div class="win-title">ACCESS GRANTED</div>
+            <div class="win-sub">7 — 7 — 7</div>
+            <div class="win-msg">Welcome. We didn't think this day would come.</div>
+        </div>
+    </div>
+
+    <!-- Spin overlay -->
+    <div class="overlay" id="overlay">
+        <div class="overlay-wheel-wrap">
+            <div class="overlay-wheel" id="overlay-wheel"></div>
+            <div class="overlay-pin">▼</div>
+        </div>
+        <p class="overlay-text" id="overlay-text">Spinning your fate...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
